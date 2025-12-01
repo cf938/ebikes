@@ -1,0 +1,35 @@
+name: Accessibility Tests
+
+on: 
+  workflow_dispatch
+
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Or your desired Node.js version
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install axe-core CLI
+      run: npm install -g @axe-core/cli
+
+    - name: Run accessibility tests with axe-core CLI
+      run: axe --config axe.conf.json --urls "http://localhost:3000" --reporter json > axe-results.json
+      # Replace "http://localhost:3000" with the URL of your application running during the CI/CD pipeline.
+      # You might need to start a local server for your application within the workflow if it's not already accessible.
+      # The axe.conf.json file can contain custom axe-core configuration.
+
+    - name: Upload axe-core results
+      uses: actions/upload-artifact@v4
+      with:
+        name: axe-core-results
+        path: axe-results.json
