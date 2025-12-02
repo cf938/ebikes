@@ -24,18 +24,42 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_New_Comment</name>
+        <label>Create New Comment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CaseComment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
         <description>Overwrites the text value of non-published comments</description>
         <name>Update_Comment</name>
         <label>Update Comment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_New_Comment</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>IsPublished</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedById</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CreatedBy.CreatedById</elementReference>
             </value>
         </filters>
         <inputAssignments>
