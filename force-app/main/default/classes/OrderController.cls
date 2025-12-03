@@ -4,8 +4,8 @@ public with sharing class OrderController {
         return [
             SELECT
                 Id,
-                Qty_S__c,
                 Qty_M__c,
+                Qty_S__c,
                 Qty_L__c,
                 Price__c,
                 Product__r.Name,
