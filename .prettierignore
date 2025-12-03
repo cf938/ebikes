@@ -4,6 +4,8 @@
 
 **/staticresources/
 **/pageObjects/
+**/*.xml
+.github/
 
 .localdevserver/
 .sf/
