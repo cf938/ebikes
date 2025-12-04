@@ -1,6 +1,8 @@
 name: Checkmarx One Scan
 on:
   workflow_dispatch:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
   push:
     branches:
       - main
