@@ -2,3 +2,7 @@
 # They will be assigned for review on all PRs.
 * @cf938
 #ECCN:Open Source
+# Test - specific reviewers for permission set file changes
+*.permissionset-meta.xml clay.tomerlin@redcross.org @bwalz-arc
+# more info on Codeowners: 
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
